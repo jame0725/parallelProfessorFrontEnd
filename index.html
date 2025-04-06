@@ -156,6 +156,14 @@
       color: #444;
     }
 
+    /*Gradient to accordion icons*/
+    .accordion-button i {
+      background: linear-gradient(135deg, #4a6eff, #ff6ec4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+
     @keyframes moveDashes {
       from {
         stroke-dashoffset: 0;
@@ -204,6 +212,7 @@
       z-index: 2;
     }
   </style>
+
 </head>
 
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50" tabindex="0">
@@ -249,7 +258,8 @@
           <div class="p-4 rounded-4 shadow-lg bg-white category">
             <i class="bi bi-upload display-4 text-info"></i>
             <h4 class="mt-3 text-dark">Upload Videos</h4>
-            <p class="mt-3 text-muted">Import your lectures and allow our AI to learn and personalize student learning.</p>
+            <p class="mt-3 text-muted">Import your lectures and allow our AI to learn and personalize student learning.
+            </p>
           </div>
         </div>
         <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
@@ -328,6 +338,72 @@
           <p class="lead mb-5 gradient-text">Dive into our AI-powered teaching assistant in action. Upload a video or
             join a class to get started.</p>
           <a href="signIn.html" class="btn btn-learn btn-lg">Launch Parallel Professor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--FAQ-->
+  <section id="faq" style="background: linear-gradient(180deg, #f0f4ff, #ffffff); padding: 50px 0;">
+    <div class="container">
+      <h2 class="text-center display-6 text-dark mb-5 fw-bold" data-aos="fade-up">Frequently Asked Questions</h2>
+      <div class="accordion" id="faqAccordion" data-aos="fade-up" data-aos-delay="200">
+        <div class="accordion-item mb-3 rounded-3 shadow-sm border-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+              <i class="bi bi-question-circle me-2 text-primary"></i> How do I upload a lecture video?
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse show">
+            <div class="accordion-body text-muted">
+              After signing in, click on "Upload Video" and follow the prompts. Supported formats include MP4 and MOV.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item mb-3 rounded-3 shadow-sm border-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faq2">
+              <i class="bi bi-cpu me-2 text-warning"></i> How does the AI understand my lectures?
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse">
+            <div class="accordion-body text-muted">
+              Our AI uses speech recognition and natural language processing to extract key points, generate summaries,
+              and train a chatbot on your content.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item mb-3 rounded-3 shadow-sm border-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faq3">
+              <i class="bi bi-shield-lock me-2 text-success"></i> Is my content secure?
+            </button>
+          </h2>
+          <div id="faq3" class="accordion-collapse collapse">
+            <div class="accordion-body text-muted">
+              Yes! We use encrypted storage and secure protocols to ensure your lectures are protected and only
+              accessible to authorized users.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item mb-3 rounded-3 shadow-sm border-0">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faq4">
+              <i class="bi bi-people me-2 text-info"></i> Can students ask questions in real-time?
+            </button>
+          </h2>
+          <div id="faq4" class="accordion-collapse collapse">
+            <div class="accordion-body text-muted">
+              Absolutely. The AI chatbot is available 24/7 and responds based on the lecture content. You can also
+              review student questions and provide feedback.
+            </div>
+          </div>
         </div>
       </div>
     </div>
