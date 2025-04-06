@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="robot.png" />
+  <title>Parallel Professor</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .navbar-brand {
+      font-weight: 600;
+      font-size: 1.7rem;
+    }
+
+    .home-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 10%;
+      flex-wrap: wrap;
+    }
+
+    .home-text {
+      max-width: 500px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .home-text h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .home-text p {
+      margin: 30px 0;
+      font-size: 1.5rem;
+      color: #555;
+    }
+
+    .btn-learn {
+      background-color: #4a6eff;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-learn:hover {
+      background-color: #3a59cc;
+    }
+
+    .home-img {
+      max-width: 500px;
+      animation: fadeInRight 1.2s ease-out;
+    }
+
+    .fade-in-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+    }
+
+    .fade-in-section.visible {
+    opacity: 1;
+    transform: none;
+    }
+
+    .gradient-text {
+    font-weight: 500;
+    background: linear-gradient(270deg, #4a6eff, #ff6ec4, #834aff);
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGradientShift 5s ease infinite;
+    }
+
+
+    @keyframes textGradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fadeInUp {
+      0% { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInRight {
+      0% { transform: translateX(60px); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+  </style>
+  
+    <!-- Type Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // fade animation
+        const faders = document.querySelectorAll('.fade-in-section');
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        faders.forEach(fadeEl => {
+          appearOnScroll.observe(fadeEl);
+        });
+  
+        // type animation
+        new Typed('#typed-text', {
+          strings: ['Parallel Professor.', 'an AI Assistant.', 'a Smart Classroom.', 'your Teaching Assistant.'],
+          typeSpeed: 60,
+          backSpeed: 40,
+          backDelay: 2000,
+          loop: true
+        });
+      });
+    </script>
+  
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="p-2 navbar navbar-expand-lg shadow-sm fixed-top" style="background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Parallel Professor</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="aboutUs.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="signIn.html">Sign In</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home -->
+  <section id="home" class="d-flex justify-content-center align-items-center text-center" style="height: 100vh; background: linear-gradient(180deg, #b7dbff 0%, #ffffff 100%)">
+    <div>
+      <h1 class="display-4 fw-bold mb-3">
+        Meet <span id="typed-text" class="text-primary"></span>
+      </h1>
+      <p class="lead mb-4">An AI-powered teaching assistant that helps you educate better, faster.</p>
+      <a href="#features" class="btn btn-learn btn-lg">Explore Features</a>
+    </div>
+  </section>
+  
+
+  <!-- Features -->
+  <section class="fade-in-section" id="features" style="background: linear-gradient(0deg, #d9e4ff, #abc7ff); padding: 100px 0">
+    <div class="container text-center">
+      <h2 class="mb-5 display-5 fw-bold text-dark">Features</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 shadow-lg bg-white">
+            <i class="bi bi-upload display-4 text-info"></i>
+            <h4 class="mt-3 text-dark">Upload Videos</h4>
+            <p class="mt-3 text-muted">Import your lectures and allow our AI to learn and personalize student learning.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 shadow-lg bg-white">
+            <i class="bi bi-robot display-4 text-warning"></i>
+            <h4 class="mt-3 text-dark">AI Assistant</h4>
+            <p class="mt-3 text-muted">Intelligent AI assistants answer questions and enhance the learning experience.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 shadow-lg bg-white">
+            <i class="bi bi-universal-access display-4 text-success"></i>
+            <h4 class="mt-3 text-dark">Accessibility</h4>
+            <p class="mt-3 text-muted">Made easy for teachers to upload, edit, and remove. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- Demo -->
+  <section class="fade-in-section" id="demo" style="background: #f0f4ff; padding: 80px 0">
+    <div class="container text-center">
+      <h2 class="mb-5 display-5 fw-bold text-dark">Get Started</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <p class="lead mb-5 gradient-text">Dive into our AI-powered teaching assistant in action. Upload a video or join a class to get started.</p>
+          <a href="signIn.html" class="btn btn-learn btn-lg">Launch Parallel Professor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const faders = document.querySelectorAll('.fade-in-section');
+  
+      const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+  
+      faders.forEach(fadeEl => {
+        appearOnScroll.observe(fadeEl);
+      });
+    });
+  </script>
+  
+  
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Type Script -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</body>
+</html>
