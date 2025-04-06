@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image.png" href="images/robot.png" />
+  <link rel="icon" type="image/png" href="images/robot.png" />
   <title>About</title>
 
   <!-- Bootstrap CSS -->
@@ -13,7 +13,6 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Custom Styles -->
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -21,6 +20,17 @@
       color: #333;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      position: relative;
+    }
+
+    .background-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
     }
 
     .navbar-brand {
@@ -38,27 +48,26 @@
     }
 
     .home-section {
-      min-height: 80vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      /* Center vertically */
       justify-content: center;
-      /* Center horizontally */
       padding: 0 10%;
       flex-wrap: wrap;
-      gap: 2rem;
+      position: relative;
+      overflow: hidden;
     }
 
     .home-text {
       flex: 1;
       max-width: 1500px;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       padding: 50px;
       border-radius: 20px;
       border: 2px solid #4a6eff;
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(12px);
-      animation: fadeInUp 1s ease-out;
+      backdrop-filter: blur(15px);
+      animation: fadeInUp 1.2s ease-out;
       text-align: center;
     }
 
@@ -92,7 +101,6 @@
       box-shadow: 0 0 25px #3a59cc;
     }
 
-
     .team-section {
       padding: 80px 10%;
       background: linear-gradient(to bottom right, #e0eaff, #ffffff);
@@ -109,11 +117,13 @@
       margin-bottom: 40px;
       text-align: center;
       padding: 20px;
-      transition: transform 0.3s ease;
+      border-radius: 15px;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
     }
 
     .team-member:hover {
-      transform: translateY(-10px);
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
 
     .team-member img {
@@ -168,22 +178,23 @@
         opacity: 1;
       }
     }
-
-    @keyframes fadeInRight {
-      from {
-        transform: translateX(30px);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
   </style>
 </head>
 
 <body>
+
+  <svg class="background-svg" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="circles" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+        <circle cx="20" cy="20" r="2" fill="#a4b8ff" />
+        <circle cx="70" cy="70" r="2" fill="#a4b8ff" />
+        <circle cx="50" cy="50" r="1.5" fill="#4a6eff" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#circles)">
+      <animate attributeName="x" from="0" to="100" dur="30s" repeatCount="indefinite" />
+    </rect>
+  </svg>
 
   <!-- Navbar -->
   <nav class="p-2 navbar navbar-expand-lg shadow-sm fixed-top"
@@ -204,7 +215,7 @@
   </nav>
 
   <!-- Mission Section -->
-  <section class="home-section" style="height: 100vh; background: linear-gradient(180deg, #b7dbff 0%, #ffffff 100%)">
+  <section class="home-section">
     <div class="home-text">
       <h1>Our Mission</h1>
       <p>Over 40% of college students struggle to keep up with coursework due to unclear lectures or limited access to

@@ -4,17 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image.png" href="images/robot.png" />
+  <link rel="icon" type="image/png" href="images/robot.png" />
   <title>Parallel Professor</title>
 
-  <!-- Bootstrap CSS -->
+  <!-- bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Google Fonts -->
+  <!-- fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
+  <!-- icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <!-- CSS -->
   <style>
@@ -24,23 +27,20 @@
       overflow-x: hidden;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* navbar */
+    .navbar {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
     .navbar-brand {
       font-weight: 600;
       font-size: 1.7rem;
-    }
-
-    .home-section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 60px 10%;
-      flex-wrap: wrap;
-    }
-
-    .home-text {
-      max-width: 500px;
-      animation: fadeInUp 1s ease-out;
     }
 
     .home-text h1 {
@@ -48,47 +48,38 @@
       font-weight: 700;
     }
 
-    .home-text p {
-      margin: 30px 0;
-      font-size: 1.5rem;
-      color: #555;
-    }
-
+    /* buttons */
     .btn-learn {
       background-color: #4a6eff;
       color: white;
       padding: 12px 30px;
       border-radius: 30px;
       text-decoration: none;
-      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
 
-    .btn-learn:hover {
-      background-color: #3a59cc;
+    .btn-learn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(120deg, #4a6eff, #ff6ec4, #834aff);
+      transition: all 0.4s ease;
+      z-index: -1;
     }
 
-    .home-img {
-      max-width: 500px;
-      animation: fadeInRight 1.2s ease-out;
-    }
-
-    .fade-in-section {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      will-change: opacity, transform;
-    }
-
-    .fade-in-section.visible {
-      opacity: 1;
-      transform: none;
+    .btn-learn:hover::before {
+      left: 0;
     }
 
     .category:hover {
       transform: translateY(-10px);
       transition: transform 0.3s;
     }
-
 
     .gradient-text {
       font-weight: 500;
@@ -99,6 +90,80 @@
       animation: textGradientShift 5s ease infinite;
     }
 
+    /*steps*/
+    .journey-map-container {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .wavy-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 100%;
+      stroke: #4a6eff;
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 5, 5;
+      animation: moveDashes 2s linear infinite;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 100px;
+      position: relative;
+    }
+
+    .step-icon {
+      background: linear-gradient(135deg, #4a6eff, #aab6ff);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(74, 110, 255, 0.3);
+      margin-right: 20px;
+    }
+
+    .step-icon img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .step-content h5 {
+      font-weight: 600;
+      color: #4a6eff;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .step-content p {
+      font-size: 1rem;
+      color: #444;
+    }
+
+    @keyframes moveDashes {
+      from {
+        stroke-dashoffset: 0;
+      }
+
+      to {
+        stroke-dashoffset: 10;
+      }
+    }
 
     @keyframes textGradientShift {
       0% {
@@ -114,67 +179,36 @@
       }
     }
 
-    @keyframes fadeInUp {
-      0% {
-        transform: translateY(40px);
-        opacity: 0;
-      }
-
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+    /* animation */
+    .apple-animation {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
     }
 
-    @keyframes fadeInRight {
-      0% {
-        transform: translateX(60px);
-        opacity: 0;
-      }
+    #appleCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
 
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-      }
+    .home-content {
+      position: relative;
+      z-index: 2;
     }
   </style>
-
-  <!-- Type Script -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // fade animation
-      const faders = document.querySelectorAll('.fade-in-section');
-      const appearOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-      faders.forEach(fadeEl => {
-        appearOnScroll.observe(fadeEl);
-      });
-
-      // type animation
-      new Typed('#typed-text', {
-        strings: ['Parallel Professor.', 'an AI Assistant.', 'a Smart Classroom.', 'your Teaching Assistant.'],
-        typeSpeed: 60,
-        backSpeed: 40,
-        backDelay: 2000,
-        loop: true
-      });
-    });
-  </script>
-
-
 </head>
 
-<body>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50" tabindex="0">
 
-  <!-- Navbar -->
-  <nav class="p-2 navbar navbar-expand-lg shadow-sm fixed-top"
-    style="background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);">
+  <!--Navbar-->
+  <nav class="p-2 navbar navbar-expand-lg shadow-sm fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand gradient-text" href="#">Parallel Professor</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -182,7 +216,7 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active fw-bold" style="color: #4a6eff" href="home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active fw-bold text-primary" href="home.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="signIn.html">Sign In</a></li>
         </ul>
@@ -190,10 +224,13 @@
     </div>
   </nav>
 
-  <!-- Home -->
-  <section id="home" class="d-flex justify-content-center align-items-center text-center"
+  <!--Home-->
+  <section id="home" class="position-relative d-flex justify-content-center align-items-center text-center"
     style="height: 100vh; background: linear-gradient(180deg, #b7dbff 0%, #ffffff 100%)">
-    <div>
+    <div class="apple-animation">
+      <canvas id="appleCanvas"></canvas>
+    </div>
+    <div class="home-content">
       <h1 class="display-4 fw-bold mb-3">
         Meet <span id="typed-text" class="text-primary"></span>
       </h1>
@@ -202,28 +239,27 @@
     </div>
   </section>
 
-
-  <!-- Features -->
-  <section class="fade-in-section" id="features"
-    style="background: linear-gradient(0deg, #d9e4ff, #abc7ff); padding: 100px 0">
+  <!--Features-->
+  <section id="features" style="background: linear-gradient(0deg, #d9e4ff, #abc7ff); padding: 100px 0">
     <div class="container text-center">
-      <h2 class="mb-5 display-5 fw-bold text-dark">Features</h2>
-      <div class="mt-2 row g-4">
-        <div class="col-md-4">
+      <h2 class="mb-5 display-5 fw-bold text-dark" data-aos="fade-up">Features</h2>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
           <div class="p-4 rounded-4 shadow-lg bg-white category">
             <i class="bi bi-upload display-4 text-info"></i>
             <h4 class="mt-3 text-dark">Upload Videos</h4>
-            <p class="mt-3 text-muted">Import your lectures and allow our AI to learn and personalize student learning. </p>
+            <p class="mt-3 text-muted">Import your lectures and allow our AI to learn and personalize student learning.</p>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
           <div class="p-4 rounded-4 shadow-lg bg-white category">
             <i class="bi bi-robot display-4 text-warning"></i>
             <h4 class="mt-3 text-dark">AI Assistant</h4>
-            <p class="mt-3 text-muted">Intelligent AI assistants answer questions and enhance the learning experience. </p>
+            <p class="mt-3 text-muted">Intelligent AI assistants answer questions and enhance the learning experience.
+            </p>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="600">
           <div class="p-4 rounded-4 shadow-lg bg-white category">
             <i class="bi bi-universal-access display-4 text-success"></i>
             <h4 class="mt-3 text-dark">Accessibility</h4>
@@ -234,13 +270,61 @@
     </div>
   </section>
 
+  <!--Steps-->
+  <section class="steps-map-section py-5" style="background: linear-gradient(180deg, #f4f7ff, #ffffff);">
+    <div class="container">
+      <h2 class="text-center gradient-text mb-5" style="font-weight: 700;">How It Works</h2>
+      <div class="journey-map-container">
+        <!-- SVG for Wavy Dotted Line -->
+        <svg class="wavy-line" viewBox="0 0 200 500" preserveAspectRatio="none">
+          <path d="M100,0 Q120,50 100,100 T100,200 T100,300 T100,400 T100,500" />
+        </svg>
 
-  <!-- Demo -->
-  <section class="fade-in-section" id="demo" style="background: #f0f4ff; padding: 80px 0">
+        <!-- Steps -->
+        <div class="steps">
+          <!-- Step 1 -->
+          <div class="step">
+            <div class="step-icon">
+              <p class="mt-3" style="font-size: 1.5rem; color: white;">1</p>
+            </div>
+            <div class="step-content">
+              <h5>Step 1: Record Lectures</h5>
+              <p>Professors use our tool to record engaging, insightful lectures directly from their device.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step">
+            <div class="step-icon">
+              <p class="mt-3" style="font-size: 1.5rem; color: white;">2</p>
+            </div>
+            <div class="step-content">
+              <h5>Step 2: AI Summarization</h5>
+              <p>AI distills key ideas and generates a 24/7 chatbot trained on that lecture content.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step">
+            <div class="step-icon">
+              <p class="mt-3" style="font-size: 1.5rem; color: white;">3</p>
+            </div>
+            <div class="step-content">
+              <h5>Step 3: Student Interaction</h5>
+              <p>Students chat with the AI bot, review summaries, and learn asynchronously—anytime, anywhere.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Demo-->
+  <section id="demo" style="background: #f0f4ff; padding: 80px 0">
     <div class="container text-center">
-      <h2 class="mb-5 display-5 fw-bold text-dark">Get Started</h2>
+      <h2 class="mb-5 display-5 fw-bold text-dark" data-aos="fade-up">Get Started</h2>
       <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="300">
           <p class="lead mb-5 gradient-text">Dive into our AI-powered teaching assistant in action. Upload a video or
             join a class to get started.</p>
           <a href="signIn.html" class="btn btn-learn btn-lg">Launch Parallel Professor</a>
@@ -249,34 +333,84 @@
     </div>
   </section>
 
+  <!--Bootstrap JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!--Typed.js-->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const faders = document.querySelectorAll('.fade-in-section');
-
-      const appearOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.15
-      });
-
-      faders.forEach(fadeEl => {
-        appearOnScroll.observe(fadeEl);
-      });
+    new Typed('#typed-text', {
+      strings: ['Parallel Professor.', 'an AI Assistant.', 'a Smart Classroom.', 'your Teaching Assistant.'],
+      typeSpeed: 60,
+      backSpeed: 40,
+      backDelay: 2000,
+      loop: true
     });
   </script>
 
+  <!--animate on scroll JS-->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!--svg JS-->
+  <script>
+    const canvas = document.getElementById("appleCanvas");
+    const ctx = canvas.getContext("2d");
 
-  <!-- Type Script -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    const dots = Array.from({ length: 60 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < dots.length; i++) {
+        const a = dots[i];
+        a.x += a.vx;
+        a.y += a.vy;
+
+        if (a.x < 0 || a.x > canvas.width) a.vx *= -1;
+        if (a.y < 0 || a.y > canvas.height) a.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "#8a2be2";
+        ctx.fill();
+
+        for (let j = i + 1; j < dots.length; j++) {
+          const b = dots[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = "rgba(138, 43, 226, 0.1)";
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+
 </body>
 
 </html>
