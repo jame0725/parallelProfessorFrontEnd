@@ -84,6 +84,12 @@
       transform: none;
     }
 
+    .category:hover {
+      transform: translateY(-10px);
+      transition: transform 0.3s;
+    }
+
+
     .gradient-text {
       font-weight: 500;
       background: linear-gradient(270deg, #4a6eff, #ff6ec4, #834aff);
@@ -170,7 +176,7 @@
   <nav class="p-2 navbar navbar-expand-lg shadow-sm fixed-top"
     style="background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Parallel Professor</a>
+      <a class="navbar-brand gradient-text" href="#">Parallel Professor</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -202,25 +208,23 @@
     style="background: linear-gradient(0deg, #d9e4ff, #abc7ff); padding: 100px 0">
     <div class="container text-center">
       <h2 class="mb-5 display-5 fw-bold text-dark">Features</h2>
-      <div class="row g-4">
+      <div class="mt-2 row g-4">
         <div class="col-md-4">
-          <div class="p-4 rounded-4 shadow-lg bg-white">
+          <div class="p-4 rounded-4 shadow-lg bg-white category">
             <i class="bi bi-upload display-4 text-info"></i>
             <h4 class="mt-3 text-dark">Upload Videos</h4>
-            <p class="mt-3 text-muted">Import your lectures and allow our AI to learn and personalize student learning.
-            </p>
+            <p class="mt-3 text-muted">Import your lectures and allow our AI to learn and personalize student learning. </p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="p-4 rounded-4 shadow-lg bg-white">
+          <div class="p-4 rounded-4 shadow-lg bg-white category">
             <i class="bi bi-robot display-4 text-warning"></i>
             <h4 class="mt-3 text-dark">AI Assistant</h4>
-            <p class="mt-3 text-muted">Intelligent AI assistants answer questions and enhance the learning experience.
-            </p>
+            <p class="mt-3 text-muted">Intelligent AI assistants answer questions and enhance the learning experience. </p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="p-4 rounded-4 shadow-lg bg-white">
+          <div class="p-4 rounded-4 shadow-lg bg-white category">
             <i class="bi bi-universal-access display-4 text-success"></i>
             <h4 class="mt-3 text-dark">Accessibility</h4>
             <p class="mt-3 text-muted">Made easy for teachers to upload, edit, and remove. </p>

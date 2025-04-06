@@ -134,6 +134,29 @@
       font-size: 1rem;
     }
 
+    .gradient-text {
+      font-weight: 500;
+      background: linear-gradient(270deg, #4a6eff, #ff6ec4, #834aff);
+      background-size: 600% 600%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGradientShift 5s ease infinite;
+    }
+
+    @keyframes textGradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
     @keyframes fadeInUp {
       from {
         transform: translateY(30px);
@@ -166,7 +189,7 @@
   <nav class="p-2 navbar navbar-expand-lg shadow-sm fixed-top"
     style="background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);">
     <div class="container-fluid">
-      <a class="navbar-brand" href="home.html">Parallel Professor</a>
+      <a class="navbar-brand gradient-text" href="home.html">Parallel Professor</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -181,7 +204,7 @@
   </nav>
 
   <!-- Mission Section -->
-  <section class="home-section">
+  <section class="home-section" style="height: 100vh; background: linear-gradient(180deg, #b7dbff 0%, #ffffff 100%)">
     <div class="home-text">
       <h1>Our Mission</h1>
       <p>Over 40% of college students struggle to keep up with coursework due to unclear lectures or limited access to
