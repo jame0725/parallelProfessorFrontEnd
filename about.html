@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image.png" href="images/robot.png" />
+  <title>About</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e6ecff, #cdd9ff);
+      color: #333;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .navbar-brand {
+      font-weight: 600;
+      font-size: 1.7rem;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #4a6eff;
+    }
+
+    .home-section {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      /* Center vertically */
+      justify-content: center;
+      /* Center horizontally */
+      padding: 0 10%;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .home-text {
+      flex: 1;
+      max-width: 1500px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 50px;
+      border-radius: 20px;
+      border: 2px solid #4a6eff;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(12px);
+      animation: fadeInUp 1s ease-out;
+      text-align: center;
+    }
+
+    .home-text h1 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      color: #4a6eff;
+      margin-bottom: 20px;
+    }
+
+    .home-text p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    .btn-learn {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #4a6eff;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 0 15px #4a6eff80;
+      transition: 0.3s ease;
+    }
+
+    .btn-learn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px #3a59cc;
+    }
+
+
+    .team-section {
+      padding: 80px 10%;
+      background: linear-gradient(to bottom right, #e0eaff, #ffffff);
+    }
+
+    .team-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #4a6eff;
+      margin-bottom: 40px;
+    }
+
+    .team-member {
+      margin-bottom: 40px;
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+    }
+
+    .team-member img {
+      border-radius: 50%;
+      max-width: 180px;
+      border: 4px solid #4a6eff44;
+      transition: 0.3s;
+    }
+
+    .team-member h5 {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .team-member p {
+      color: #555;
+      font-size: 1rem;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        transform: translateX(30px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="p-2 navbar navbar-expand-lg shadow-sm fixed-top"
+    style="background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="home.html">Parallel Professor</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="signIn.html">Sign In</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mission Section -->
+  <section class="home-section">
+    <div class="home-text">
+      <h1>Our Mission</h1>
+      <p>Over 40% of college students struggle to keep up with coursework due to unclear lectures or limited access to
+        professors, while one in four regularly misses class. Parallel Professor bridges this gap by allowing professors
+        to record lectures, which AI then summarizes and pairs with a chatbot for 24/7, context-aware answers. This
+        solution helps students catch up, learn at their own pace, and review material asynchronously, all while
+        reducing the burden on professors. In a digital age, Parallel Professor makes education more accessible and
+        personalized, giving every student a better chance to succeed.</p>
+      <a href="#team" class="btn-learn">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Meet the Team -->
+  <section class="team-section text-center" id="team">
+    <h2>Meet the Team</h2>
+    <div class="row justify-content-center">
+      <!-- Member 1 -->
+      <div class="col-md-3 team-member">
+        <img src="images/daud.jpg" alt="Daud Idrees">
+        <h5>Daud Idrees</h5>
+        <p>Daud is a senior at Centennial High School with a passion for robotics and engineering. When he's not
+          building bots, you'll find him working hard at Burger King. He’s excited to study Computer Science at Rice
+          University next fall.</p>
+      </div>
+      <!-- Member 2 -->
+      <div class="col-md-3 team-member">
+        <img src="images/raiyan.jpg" alt="Raiyan Zaman">
+        <h5>Raiyan Zaman</h5>
+        <p>Raiyan is a senior at Centennial High School who thrives at the intersection of creativity and code. This
+          fall, he's headed to Georgia Tech to pursue his passion for Computer Science.</p>
+      </div>
+      <!-- Member 3 -->
+      <div class="col-md-3 team-member">
+        <img src="images/james.jpg" alt="James Li">
+        <h5>James Li</h5>
+        <p>James is a senior at Centennial High School with a love for both programming and lacrosse. He’ll be studying
+          Computer Engineering at the United States Air Force Academy.</p>
+      </div>
+      <!-- Member 4 -->
+      <div class="col-md-3 team-member">
+        <img src="images/ayush.jpg" alt="Ayush Ghosh">
+        <h5>Ayush Ghosh</h5>
+        <p>Ayush is a senior at Centennial High School who is passionate about soccer and CAD design. Next year, he’ll
+          be studying Mechanical Engineering at UC Berkeley next year.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
